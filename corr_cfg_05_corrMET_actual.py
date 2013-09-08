@@ -34,13 +34,26 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 50
 process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(options.maxEvents))
 
 ##____________________________________________________________________________||
-# process.load("JetMETCorrections.Type1MET.pfMETCorrections_cff")
-# process.load("JetMETCorrections.Type1MET.caloMETCorrections_cff")
-
-##____________________________________________________________________________||
 process.load('METCorrections_cff')
 
-process.pfType0CorrectedMet = cms.EDProducer(
+process.caloMetT1 = cms.EDProducer(
+    "CorrectedCaloMETProducer2",
+    src = cms.InputTag('corMetGlobalMuons'),
+    srcCorrections = cms.VInputTag(
+        cms.InputTag('caloJetMETcorr', 'type1')
+        ),
+)   
+
+process.caloMetT1T2 = cms.EDProducer(
+    "CorrectedCaloMETProducer2",
+    src = cms.InputTag('corMetGlobalMuons'),
+    srcCorrections = cms.VInputTag(
+        cms.InputTag('caloJetMETcorr', 'type1'),
+        cms.InputTag('caloMETcorrType2')
+    ),
+)   
+
+process.pfMetT0rt = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
@@ -48,7 +61,7 @@ process.pfType0CorrectedMet = cms.EDProducer(
     ),
 )   
 
-process.pfType0p1CorrectedMet = cms.EDProducer(
+process.pfMetT0rtT1 = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
@@ -57,7 +70,7 @@ process.pfType0p1CorrectedMet = cms.EDProducer(
     ),
 )   
 
-process.pfType0p1p2CorrectedMet = cms.EDProducer(
+process.pfMetT0rtT1T2 = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
@@ -68,7 +81,7 @@ process.pfType0p1p2CorrectedMet = cms.EDProducer(
 )   
 
 
-process.pfType0p2CorrectedMet = cms.EDProducer(
+process.pfMetT0rtT2 = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
@@ -77,7 +90,7 @@ process.pfType0p2CorrectedMet = cms.EDProducer(
     ),
 )   
 
-process.pfType0pfcCorrectedMet = cms.EDProducer(
+process.pfMetT0pc = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
@@ -85,12 +98,29 @@ process.pfType0pfcCorrectedMet = cms.EDProducer(
     ),
 )   
 
-process.pfType0pfcp1CorrectedMet = cms.EDProducer(
+process.pfMetT0pcT1 = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
         cms.InputTag('pfMETcorrType0'),
         cms.InputTag('pfJetMETcorr', 'type1')        
+    ),
+)   
+
+process.pfMetT1 = cms.EDProducer(
+    "CorrectedPFMETProducer2",
+    src = cms.InputTag('pfMet'),
+    srcCorrections = cms.VInputTag(
+        cms.InputTag('pfJetMETcorr', 'type1')
+    ),
+)   
+
+process.pfMetT1T2 = cms.EDProducer(
+    "CorrectedPFMETProducer2",
+    src = cms.InputTag('pfMet'),
+    srcCorrections = cms.VInputTag(
+        cms.InputTag('pfJetMETcorr', 'type1'),
+        cms.InputTag('pfMETcorrType2'),
     ),
 )   
 
@@ -100,17 +130,17 @@ process.p = cms.Path(
     process.pfMETcorrType0recoTrack +
     process.pfMETcorrType0recoTrackForTypeIIMET +
     process.pfMETcorrType2 +
-    process.pfType1CorrectedMet +
-    process.pfType1p2CorrectedMet +
-    process.pfType0CorrectedMet +
-    process.pfType0p1CorrectedMet +
-    process.pfType0p1p2CorrectedMet +
-    process.pfType0p2CorrectedMet +
-    process.pfType0pfcCorrectedMet +
-    process.pfType0pfcp1CorrectedMet +
+    process.pfMetT0rt +
+    process.pfMetT0rtT1 +
+    process.pfMetT0rtT1T2 +
+    process.pfMetT0rtT2 +
+    process.pfMetT0pc +
+    process.pfMetT0pcT1 +
+    process.pfMetT1 +
+    process.pfMetT1T2 +
     process.caloMETcorrType2 +
-    process.caloType1CorrectedMet +
-    process.caloType1p2CorrectedMet 
+    process.caloMetT1 + 
+    process.caloMetT1T2
 )
 
 process.e1 = cms.EndPath(
