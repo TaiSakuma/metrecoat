@@ -29,6 +29,26 @@ class METProducerTest(unittest.TestCase):
     def test_n_events(self):
         self.assertEqual(self.exEvents.size(), self.acEvents.size())
 
+    def test_corrCaloMetType2(self):
+        label = ("corrCaloMetType2", "", "CORR")
+        self.assert_CorrMETData(label)
+
+    def test_corrPfMetShiftXY(self):
+        label = ("corrPfMetShiftXY", "", "CORR")
+        self.assert_CorrMETData(label)
+
+    def test_corrPfMetType0RecoTrack(self):
+        label = ("corrPfMetType0RecoTrack", "", "CORR")
+        self.assert_CorrMETData(label)
+
+    def test_corrPfMetType0RecoTrackForType2(self):
+        label = ("corrPfMetType0RecoTrackForType2", "", "CORR")
+        self.assert_CorrMETData(label)
+
+    def test_corrPfMetType2(self):
+        label = ("corrPfMetType2", "", "CORR")
+        self.assert_CorrMETData(label)
+
     def test_corrPfMetType1_offset(self):
         label = ("corrPfMetType1",    "offset", "CORR")
         self.assert_CorrMETData(label)

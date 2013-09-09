@@ -20,7 +20,7 @@ def main():
     
     print '%6s'  % 'run',
     print '%9s'  % 'event',
-    print '%25s' % 'module',
+    print '%35s' % 'module',
     print '%10s' % 'label',
     print '%10s' % 'mex',
     print '%10s' % 'mey',
@@ -39,16 +39,21 @@ def count(inputPath):
     handleCorrMETData = Handle("CorrMETData") 
 
     inputTags = (
-        ("pfCandMETcorr",        "",       "CORR",   handleCorrMETData),
-        ("pfchsMETcorr",         "type0",  "CORR",   handleCorrMETData),
-        ("muonCaloMETcorr",      "",       "CORR",   handleCorrMETData),
-        ("corrPfMetType1",       "offset", "CORR",   handleCorrMETData),
-        ("corrPfMetType1",       "type1",  "CORR",   handleCorrMETData),
-        ("corrPfMetType1",       "type2",  "CORR",   handleCorrMETData),
-        ("corrPfMetType0PfCand", "",       "CORR",   handleCorrMETData),
-        ("corrCaloMetType1",     "offset", "CORR",   handleCorrMETData),
-        ("corrCaloMetType1",     "type1",  "CORR",   handleCorrMETData),
-        ("corrCaloMetType1",     "type2",  "CORR",   handleCorrMETData),
+        ("pfCandMETcorr",                   "",       "CORR",   handleCorrMETData),
+        ("pfchsMETcorr",                    "type0",  "CORR",   handleCorrMETData),
+        ("muonCaloMETcorr",                 "",       "CORR",   handleCorrMETData),
+        ("corrPfMetType1",                  "offset", "CORR",   handleCorrMETData),
+        ("corrPfMetType1",                  "type1",  "CORR",   handleCorrMETData),
+        ("corrPfMetType1",                  "type2",  "CORR",   handleCorrMETData),
+        ("corrPfMetType0PfCand",            "",       "CORR",   handleCorrMETData),
+        ("corrCaloMetType1",                "offset", "CORR",   handleCorrMETData),
+        ("corrCaloMetType1",                "type1",  "CORR",   handleCorrMETData),
+        ("corrCaloMetType1",                "type2",  "CORR",   handleCorrMETData),
+        ("corrCaloMetType2",                "",       "CORR",   handleCorrMETData),
+        ("corrPfMetShiftXY",                "",       "CORR",   handleCorrMETData),
+        ("corrPfMetType0RecoTrack",         "",       "CORR",   handleCorrMETData),
+        ("corrPfMetType0RecoTrackForType2", "",       "CORR",   handleCorrMETData),
+        ("corrPfMetType2",                  "",       "CORR",   handleCorrMETData),
         )
 
     firstEvent = True
@@ -66,7 +71,7 @@ def count(inputPath):
 
             print '%6d'    % run,
             print '%9d'    % eventId,
-            print '%25s'   % inputTag[0],
+            print '%35s'   % inputTag[0],
             print '%10s'   % inputTag[1],
             print '%10.3f' % obj.mex,
             print '%10.3f' % obj.mey,
