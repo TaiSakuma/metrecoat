@@ -29,16 +29,16 @@ class METProducerTest(unittest.TestCase):
     def test_n_events(self):
         self.assertEqual(self.exEvents.size(), self.acEvents.size())
 
-    def test_pfJetMETcorr_offset(self):
-        label = ("pfJetMETcorr",    "offset", "CORR")
+    def test_corrPfMetType1_offset(self):
+        label = ("corrPfMetType1",    "offset", "CORR")
         self.assert_CorrMETData(label)
 
-    def test_pfJetMETcorr_type1(self):
-        label = ("pfJetMETcorr",    "type1",  "CORR")
+    def test_corrPfMetType1_type1(self):
+        label = ("corrPfMetType1",    "type1",  "CORR")
         self.assert_CorrMETData(label)
 
-    def test_pfJetMETcorr_type2(self):
-        label = ("pfJetMETcorr",    "type2",  "CORR")
+    def test_corrPfMetType1_type2(self):
+        label = ("corrPfMetType1",    "type2",  "CORR")
         self.assert_CorrMETData(label)
 
     def test_pfCandMETcorr(self):
@@ -49,24 +49,24 @@ class METProducerTest(unittest.TestCase):
         label = ("pfchsMETcorr",    "type0",  "CORR")
         self.assert_CorrMETData(label)
 
-    def test_pfMETcorrType0(self):
-        label = ("pfMETcorrType0",  "",       "CORR")
+    def test_corrPfMetType0PfCand(self):
+        label = ("corrPfMetType0PfCand",  "",       "CORR")
         self.assert_CorrMETData(label)
 
     def test_muonCaloMETcorr(self):
         label = ("muonCaloMETcorr", "",       "CORR")
         self.assert_CorrMETData(label)
 
-    def test_caloJetMETcorr_offset(self):
-        label = ("caloJetMETcorr",  "offset", "CORR")
+    def test_corrCaloMetType1_offset(self):
+        label = ("corrCaloMetType1",  "offset", "CORR")
         self.assert_CorrMETData(label)
 
-    def test_caloJetMETcorr_type1(self):
-        label = ("caloJetMETcorr",  "type1",  "CORR")
+    def test_corrCaloMetType1_type1(self):
+        label = ("corrCaloMetType1",  "type1",  "CORR")
         self.assert_CorrMETData(label)
 
-    def test_caloJetMETcorr_type2(self):
-        label = ("caloJetMETcorr",  "type2",  "CORR")
+    def test_corrCaloMetType1_type2(self):
+        label = ("corrCaloMetType1",  "type2",  "CORR")
         self.assert_CorrMETData(label)
 
     def assert_CorrMETData(self, label):
