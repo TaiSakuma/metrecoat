@@ -42,98 +42,22 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 50
 process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(options.maxEvents))
 
 ##____________________________________________________________________________||
-process.load("JetMETCorrections.Type1MET.pfMETCorrections_cff")
-process.corrPfMetType1 = process.pfJetMETcorr.clone()
-process.pfCandMETcorr = process.pfCandMETcorr.clone()
-process.pfchsMETcorr = process.pfchsMETcorr.clone()
+process.load("JetMETCorrections.Type1MET.correctionTermsPfMetType1Type2_cff")
 
 ##____________________________________________________________________________||
-process.load("JetMETCorrections.Type1MET.pfMETCorrectionType0_cfi")
-process.corrPfMetType0PfCand = process.pfMETcorrType0.clone()
+process.load("JetMETCorrections.Type1MET.correctionTermsPfMetType0PFCandidate_cff")
 
 ##____________________________________________________________________________||
-process.load("JetMETCorrections.Type1MET.caloMETCorrections_cff")
-process.corrCaloMetType1 = process.caloJetMETcorr.clone()
+process.load("JetMETCorrections.Type1MET.correctionTermsCaloMet_cff")
 
 ##____________________________________________________________________________||
-process.corrCaloMetType2 = cms.EDProducer(
-    "Type2CorrectionProducer",
-    srcUnclEnergySums = cms.VInputTag(
-        cms.InputTag('corrCaloMetType1', 'type2'),
-        cms.InputTag('muonCaloMETcorr') # NOTE: use 'muonCaloMETcorr' for 'corMetGlobalMuons', do **not** use it for 'met' !!
-        ),
-    type2CorrFormula = cms.string("A + B*TMath::Exp(-C*x)"),
-    type2CorrParameter = cms.PSet(
-        A = cms.double(2.0),
-        B = cms.double(1.3),
-        C = cms.double(0.1)
-        )
-    )
-
-process.corrPfMetType2 = cms.EDProducer(
-    "Type2CorrectionProducer",
-    srcUnclEnergySums = cms.VInputTag(
-        cms.InputTag('corrPfMetType1', 'type2'),
-        cms.InputTag('corrPfMetType1', 'offset'),
-        cms.InputTag('pfCandMETcorr')
-    ),
-    type2CorrFormula = cms.string("A"),
-    type2CorrParameter = cms.PSet(
-        A = cms.double(1.4)
-        )
-    )
-
-process.corrPfMetType0RecoTrack = cms.EDProducer(
-    "ScaleCorrMETData",
-    src = cms.InputTag('pfchsMETcorr', 'type0'),
-    scaleFactor = cms.double(1 - 0.6)
-    )
-
-process.corrPfMetType0RecoTrackForType2 = cms.EDProducer(
-    "ScaleCorrMETData",
-    src = cms.InputTag('corrPfMetType0RecoTrack'),
-    scaleFactor = cms.double(1.4)
-    )
+process.load("JetMETCorrections.Type1MET.correctionTermsPfMetType0RecoTrack_cff")
 
 ##____________________________________________________________________________||
-process.load("JetMETCorrections.Type1MET.pfMETsysShiftCorrections_cfi")
-process.corrPfMetShiftXY = process.pfMEtSysShiftCorr.clone()
+process.load("JetMETCorrections.Type1MET.correctionTermsPfMetShiftXY_cff")
 
 # process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012runABCDvsNvtx_data
 process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012runABCDvsNvtx_mc
-
-##____________________________________________________________________________||
-process.correctionTermsPfMetType1Type2 = cms.Sequence(
-    process.ak5PFJetsPtrs +
-    process.particleFlowPtrs +
-    process.pfCandsNotInJetPtrs +
-    process.pfCandsNotInJet +
-    process.pfCandMETcorr +
-    process.corrPfMetType1 +
-    process.corrPfMetType2
-    )
-
-process.correctionTermsPfMetType0RecoTrack = cms.Sequence(
-    process.pfchsMETcorr +
-    process.corrPfMetType0RecoTrack +
-    process.corrPfMetType0RecoTrackForType2
-    )
-
-process.correctionTermsPfMetType0PFCandidate = cms.Sequence(
-    process.type0PFMEtCorrectionPFCandToVertexAssociation +
-    process.corrPfMetType0PfCand
-    )
-
-process.correctionTermsPfMetShiftXY = cms.Sequence(
-    process.selectedVerticesForMEtCorr *
-    process.corrPfMetShiftXY
-    )
-
-process.correctionTermsCaloMet = cms.Sequence(
-    process.corrCaloMetType1 +
-    process.muonCaloMETcorr +
-    process.corrCaloMetType2
-    )
 
 ##____________________________________________________________________________||
 process.p = cms.Path(
