@@ -39,16 +39,16 @@ def count(inputPath):
     handleCorrMETData = Handle("CorrMETData") 
 
     inputTags = (
-        ("pfJetMETcorr",    "offset", "CORR",   handleCorrMETData),
-        ("pfJetMETcorr",    "type1",  "CORR",   handleCorrMETData),
-        ("pfJetMETcorr",    "type2",  "CORR",   handleCorrMETData),
-        ("pfCandMETcorr",   "",       "CORR",   handleCorrMETData),
-        ("pfchsMETcorr",    "type0",  "CORR",   handleCorrMETData),
-        ("pfMETcorrType0",  "",       "CORR",   handleCorrMETData),
-        ("muonCaloMETcorr", "",       "CORR",   handleCorrMETData),
-        ("caloJetMETcorr",  "offset", "CORR",   handleCorrMETData),
-        ("caloJetMETcorr",  "type1",  "CORR",   handleCorrMETData),
-        ("caloJetMETcorr",  "type2",  "CORR",   handleCorrMETData),
+        ("pfCandMETcorr",        "",       "CORR",   handleCorrMETData),
+        ("pfchsMETcorr",         "type0",  "CORR",   handleCorrMETData),
+        ("muonCaloMETcorr",      "",       "CORR",   handleCorrMETData),
+        ("corrPfMetType1",       "offset", "CORR",   handleCorrMETData),
+        ("corrPfMetType1",       "type1",  "CORR",   handleCorrMETData),
+        ("corrPfMetType1",       "type2",  "CORR",   handleCorrMETData),
+        ("corrPfMetType0PfCand", "",       "CORR",   handleCorrMETData),
+        ("corrCaloMetType1",     "offset", "CORR",   handleCorrMETData),
+        ("corrCaloMetType1",     "type1",  "CORR",   handleCorrMETData),
+        ("corrCaloMetType1",     "type2",  "CORR",   handleCorrMETData),
         )
 
     firstEvent = True
