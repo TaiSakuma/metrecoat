@@ -67,42 +67,98 @@ class METProducerTest(unittest.TestCase):
         self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoPFMETs_pfMetT0pc(self):
-        label = ("pfMetT0pc", "" , "TEST")
+        label = ("pfMetT0pc", "", "TEST")
         exHandle = self.exHandlePFMETs
         acHandle = self.acHandlePFMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
         self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoPFMETs_pfMetT0pcT1(self):
-        label = ("pfMetT0pcT1", "" , "TEST")
+        label = ("pfMetT0pcT1", "", "TEST")
         exHandle = self.exHandlePFMETs
         acHandle = self.acHandlePFMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
         self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoPFMETs_pfMetT1(self):
-        label = ("pfMetT1", "" , "TEST")
+        label = ("pfMetT1", "", "TEST")
         exHandle = self.exHandlePFMETs
         acHandle = self.acHandlePFMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
         self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoPFMETs_pfMetT1T2(self):
-        label = ("pfMetT1T2", "" , "TEST")
+        label = ("pfMetT1T2", "", "TEST")
+        exHandle = self.exHandlePFMETs
+        acHandle = self.acHandlePFMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+    def test_recoPFMETs_pfMetT0rtTxy(self):
+        label = ("pfMetT0rtTxy", "", "TEST")
+        exHandle = self.exHandlePFMETs
+        acHandle = self.acHandlePFMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+    def test_recoPFMETs_pfMetT0rtT1Txy(self):
+        label = ("pfMetT0rtT1Txy", "", "TEST")
+        exHandle = self.exHandlePFMETs
+        acHandle = self.acHandlePFMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+    def test_recoPFMETs_pfMetT0rtT1T2Txy(self):
+        label = ("pfMetT0rtT1T2Txy", "", "TEST")
+        exHandle = self.exHandlePFMETs
+        acHandle = self.acHandlePFMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+    def test_recoPFMETs_pfMetT0rtT2Txy(self):
+        label = ("pfMetT0rtT2Txy", "", "TEST")
+        exHandle = self.exHandlePFMETs
+        acHandle = self.acHandlePFMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+    def test_recoPFMETs_pfMetT0pcTxy(self):
+        label = ("pfMetT0pcTxy", "", "TEST")
+        exHandle = self.exHandlePFMETs
+        acHandle = self.acHandlePFMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+    def test_recoPFMETs_pfMetT0pcT1Txy(self):
+        label = ("pfMetT0pcT1Txy", "", "TEST")
+        exHandle = self.exHandlePFMETs
+        acHandle = self.acHandlePFMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+    def test_recoPFMETs_pfMetT1Txy(self):
+        label = ("pfMetT1Txy", "", "TEST")
+        exHandle = self.exHandlePFMETs
+        acHandle = self.acHandlePFMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+    def test_recoPFMETs_pfMetT1T2Txy(self):
+        label = ("pfMetT1T2Txy", "", "TEST")
         exHandle = self.exHandlePFMETs
         acHandle = self.acHandlePFMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
         self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_caloMetT1(self):
-        label = ("caloMetT1", "" ,"TEST")
+        label = ("caloMetT1", "","TEST")
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
         self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_caloMetT1T2(self):
-        label = ("caloMetT1T2", "" ,"TEST")
+        label = ("caloMetT1T2", "","TEST")
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
