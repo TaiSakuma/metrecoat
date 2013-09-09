@@ -43,7 +43,7 @@ process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(options.maxEv
 
 ##____________________________________________________________________________||
 process.load("JetMETCorrections.Type1MET.pfMETCorrections_cff")
-process.pfJetMETcorr = cms.EDProducer(
+process.corrPfMetType1 = cms.EDProducer(
     "PFJetMETcorrInputProducer",
     src = cms.InputTag('ak5PFJets'),
     offsetCorrLabel = cms.string("ak5PFL1Fastjet"),
@@ -70,7 +70,7 @@ process.pfchsMETcorr = cms.EDProducer(
 
 ##____________________________________________________________________________||
 process.load("JetMETCorrections.Type1MET.pfMETCorrectionType0_cfi")
-process.pfMETcorrType0 = cms.EDProducer(
+process.corrPfMetType0PfCand = cms.EDProducer(
     "Type0PFMETcorrInputProducer",
     srcPFCandidateToVertexAssociations = cms.InputTag('pfCandidateToVertexAssociation'),
     srcHardScatterVertex = cms.InputTag('selectedPrimaryVertexHighestPtTrackSumForPFMEtCorrType0'),
@@ -86,7 +86,7 @@ process.pfMETcorrType0 = cms.EDProducer(
 
 ##____________________________________________________________________________||
 # process.load("JetMETCorrections.Type1MET.caloMETCorrections_cff")
-process.caloJetMETcorr = cms.EDProducer(
+process.corrCaloMetType1 = cms.EDProducer(
     "CaloJetMETcorrInputProducer",
     src = cms.InputTag('ak5CaloJets'),
     jetCorrLabel = cms.string("ak5CaloL2L3"), # NOTE: use "ak5CaloL2L3" for MC / "ak5CaloL2L3Residual" for Data
@@ -109,13 +109,13 @@ process.p = cms.Path(
     process.particleFlowPtrs +
     process.pfCandsNotInJetPtrs +
     process.pfCandsNotInJet +
-    process.pfJetMETcorr +
+    process.corrPfMetType1 +
     process.pfCandMETcorr +
     process.pfchsMETcorr +
-    process.caloJetMETcorr +
+    process.corrCaloMetType1 +
     process.muonCaloMETcorr +
     process.type0PFMEtCorrectionPFCandToVertexAssociation +
-    process.pfMETcorrType0
+    process.corrPfMetType0PfCand
 )
 
 process.e1 = cms.EndPath(

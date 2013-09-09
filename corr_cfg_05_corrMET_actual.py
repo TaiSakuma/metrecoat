@@ -45,7 +45,7 @@ process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012run
 process.corrCaloMetType2 = cms.EDProducer(
     "Type2CorrectionProducer",
     srcUnclEnergySums = cms.VInputTag(
-        cms.InputTag('caloJetMETcorr', 'type2'),
+        cms.InputTag('corrCaloMetType1', 'type2'),
         cms.InputTag('muonCaloMETcorr') # NOTE: use 'muonCaloMETcorr' for 'corMetGlobalMuons', do **not** use it for 'met' !!
         ),
     type2CorrFormula = cms.string("A + B*TMath::Exp(-C*x)"),
@@ -59,8 +59,8 @@ process.corrCaloMetType2 = cms.EDProducer(
 process.corrPfMetType2 = cms.EDProducer(
     "Type2CorrectionProducer",
     srcUnclEnergySums = cms.VInputTag(
-        cms.InputTag('pfJetMETcorr', 'type2'),
-        cms.InputTag('pfJetMETcorr', 'offset'),
+        cms.InputTag('corrPfMetType1', 'type2'),
+        cms.InputTag('corrPfMetType1', 'offset'),
         cms.InputTag('pfCandMETcorr')
     ),
     type2CorrFormula = cms.string("A"),
@@ -86,7 +86,7 @@ process.caloMetT1 = cms.EDProducer(
     "CorrectedCaloMETProducer2",
     src = cms.InputTag('corMetGlobalMuons'),
     srcCorrections = cms.VInputTag(
-        cms.InputTag('caloJetMETcorr', 'type1')
+        cms.InputTag('corrCaloMetType1', 'type1')
         ),
 )   
 
@@ -94,7 +94,7 @@ process.caloMetT1T2 = cms.EDProducer(
     "CorrectedCaloMETProducer2",
     src = cms.InputTag('corMetGlobalMuons'),
     srcCorrections = cms.VInputTag(
-        cms.InputTag('caloJetMETcorr', 'type1'),
+        cms.InputTag('corrCaloMetType1', 'type1'),
         cms.InputTag('corrCaloMetType2')
     ),
 )   
@@ -112,7 +112,7 @@ process.pfMetT0rtT1 = cms.EDProducer(
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
         cms.InputTag('corrPfMetType0RecoTrack'),
-        cms.InputTag('pfJetMETcorr', 'type1'),
+        cms.InputTag('corrPfMetType1', 'type1'),
     ),
 )   
 
@@ -121,7 +121,7 @@ process.pfMetT0rtT1T2 = cms.EDProducer(
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
         cms.InputTag('corrPfMetType0RecoTrackForType2'),
-        cms.InputTag('pfJetMETcorr', 'type1'),
+        cms.InputTag('corrPfMetType1', 'type1'),
         cms.InputTag('corrPfMetType2'),
     ),
 )   
@@ -139,7 +139,7 @@ process.pfMetT0pc = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
-        cms.InputTag('pfMETcorrType0'),
+        cms.InputTag('corrPfMetType0PfCand'),
     ),
 )   
 
@@ -147,8 +147,8 @@ process.pfMetT0pcT1 = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
-        cms.InputTag('pfMETcorrType0'),
-        cms.InputTag('pfJetMETcorr', 'type1')        
+        cms.InputTag('corrPfMetType0PfCand'),
+        cms.InputTag('corrPfMetType1', 'type1')
     ),
 )   
 
@@ -156,7 +156,7 @@ process.pfMetT1 = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
-        cms.InputTag('pfJetMETcorr', 'type1')
+        cms.InputTag('corrPfMetType1', 'type1')
     ),
 )   
 
@@ -164,7 +164,7 @@ process.pfMetT1T2 = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
-        cms.InputTag('pfJetMETcorr', 'type1'),
+        cms.InputTag('corrPfMetType1', 'type1'),
         cms.InputTag('corrPfMetType2'),
     ),
 )   
@@ -183,7 +183,7 @@ process.pfMetT0rtT1Txy = cms.EDProducer(
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
         cms.InputTag('corrPfMetType0RecoTrack'),
-        cms.InputTag('pfJetMETcorr', 'type1'),
+        cms.InputTag('corrPfMetType1', 'type1'),
         cms.InputTag('corrPfMetShiftXY'),
     ),
 )   
@@ -193,7 +193,7 @@ process.pfMetT0rtT1T2Txy = cms.EDProducer(
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
         cms.InputTag('corrPfMetType0RecoTrackForType2'),
-        cms.InputTag('pfJetMETcorr', 'type1'),
+        cms.InputTag('corrPfMetType1', 'type1'),
         cms.InputTag('corrPfMetType2'),
         cms.InputTag('corrPfMetShiftXY'),
     ),
@@ -213,7 +213,7 @@ process.pfMetT0pcTxy = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
-        cms.InputTag('pfMETcorrType0'),
+        cms.InputTag('corrPfMetType0PfCand'),
         cms.InputTag('corrPfMetShiftXY'),
     ),
 )   
@@ -222,8 +222,8 @@ process.pfMetT0pcT1Txy = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
-        cms.InputTag('pfMETcorrType0'),
-        cms.InputTag('pfJetMETcorr', 'type1'),       
+        cms.InputTag('corrPfMetType0PfCand'),
+        cms.InputTag('corrPfMetType1', 'type1'),
         cms.InputTag('corrPfMetShiftXY'),
     ),
 )   
@@ -232,7 +232,7 @@ process.pfMetT1Txy = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
-        cms.InputTag('pfJetMETcorr', 'type1'),
+        cms.InputTag('corrPfMetType1', 'type1'),
         cms.InputTag('corrPfMetShiftXY'),
     ),
 )   
@@ -241,7 +241,7 @@ process.pfMetT1T2Txy = cms.EDProducer(
     "CorrectedPFMETProducer2",
     src = cms.InputTag('pfMet'),
     srcCorrections = cms.VInputTag(
-        cms.InputTag('pfJetMETcorr', 'type1'),
+        cms.InputTag('corrPfMetType1', 'type1'),
         cms.InputTag('corrPfMetType2'),
         cms.InputTag('corrPfMetShiftXY'),
     ),
