@@ -98,29 +98,50 @@ process.corrPfMetType0RecoTrackForType2 = cms.EDProducer(
 ##____________________________________________________________________________||
 process.load("JetMETCorrections.Type1MET.pfMETsysShiftCorrections_cfi")
 process.corrPfMetShiftXY = process.pfMEtSysShiftCorr.clone()
-process.corrPfMetShiftXYSequence = cms.Sequence(process.selectedVerticesForMEtCorr * process.corrPfMetShiftXY)
 
 # process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012runABCDvsNvtx_data
 process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012runABCDvsNvtx_mc
 
 ##____________________________________________________________________________||
-process.p = cms.Path(
+process.correctionTermsPfMetType1Type2 = cms.Sequence(
     process.ak5PFJetsPtrs +
     process.particleFlowPtrs +
     process.pfCandsNotInJetPtrs +
     process.pfCandsNotInJet +
-    process.corrPfMetType1 +
     process.pfCandMETcorr +
+    process.corrPfMetType1 +
+    process.corrPfMetType2
+    )
+
+process.correctionTermsPfMetType0RecoTrack = cms.Sequence(
     process.pfchsMETcorr +
+    process.corrPfMetType0RecoTrack +
+    process.corrPfMetType0RecoTrackForType2
+    )
+
+process.correctionTermsPfMetType0PFCandidate = cms.Sequence(
+    process.type0PFMEtCorrectionPFCandToVertexAssociation +
+    process.corrPfMetType0PfCand
+    )
+
+process.correctionTermsPfMetShiftXY = cms.Sequence(
+    process.selectedVerticesForMEtCorr *
+    process.corrPfMetShiftXY
+    )
+
+process.correctionTermsCaloMet = cms.Sequence(
     process.corrCaloMetType1 +
     process.muonCaloMETcorr +
-    process.type0PFMEtCorrectionPFCandToVertexAssociation +
-    process.corrPfMetType0PfCand +
-    process.corrPfMetType0RecoTrack +
-    process.corrPfMetType0RecoTrackForType2 +
-    process.corrPfMetType2 +
-    process.corrPfMetShiftXYSequence +
     process.corrCaloMetType2
+    )
+
+##____________________________________________________________________________||
+process.p = cms.Path(
+    process.correctionTermsPfMetType1Type2 +
+    process.correctionTermsPfMetType0RecoTrack +
+    process.correctionTermsPfMetType0PFCandidate +
+    process.correctionTermsPfMetShiftXY +
+    process.correctionTermsCaloMet
 )
 
 process.e1 = cms.EndPath(
