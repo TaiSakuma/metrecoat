@@ -43,65 +43,65 @@ process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(options.maxEv
 
 ##____________________________________________________________________________||
 process.load("JetMETCorrections.Type1MET.pfMETCorrections_cff")
-process.corrPfMetType1 = cms.EDProducer(
-    "PFJetMETcorrInputProducer",
-    src = cms.InputTag('ak5PFJets'),
-    offsetCorrLabel = cms.string("ak5PFL1Fastjet"),
-    jetCorrLabel = cms.string("ak5PFL1FastL2L3"), # NOTE: use "ak5PFL1FastL2L3" for MC / "ak5PFL1FastL2L3Residual" for Data
-    jetCorrEtaMax = cms.double(9.9),
-    type1JetPtThreshold = cms.double(10.0),
-    skipEM = cms.bool(True),
-    skipEMfractionThreshold = cms.double(0.90),
-    skipMuons = cms.bool(True),
-    skipMuonSelection = cms.string("isGlobalMuon | isStandAloneMuon")
-)
-
-process.pfCandMETcorr = cms.EDProducer(
-    "PFCandMETcorrInputProducer",
-    src = cms.InputTag('pfCandsNotInJet')
-)
-
-process.pfchsMETcorr = cms.EDProducer(
-    "PFchsMETcorrInputProducer",
-    src = cms.InputTag('offlinePrimaryVertices'),
-    goodVtxNdof = cms.uint32(4),
-    goodVtxZ = cms.double(24)
-)
+process.corrPfMetType1 = process.pfJetMETcorr.clone()
+process.pfCandMETcorr = process.pfCandMETcorr.clone()
+process.pfchsMETcorr = process.pfchsMETcorr.clone()
 
 ##____________________________________________________________________________||
 process.load("JetMETCorrections.Type1MET.pfMETCorrectionType0_cfi")
-process.corrPfMetType0PfCand = cms.EDProducer(
-    "Type0PFMETcorrInputProducer",
-    srcPFCandidateToVertexAssociations = cms.InputTag('pfCandidateToVertexAssociation'),
-    srcHardScatterVertex = cms.InputTag('selectedPrimaryVertexHighestPtTrackSumForPFMEtCorrType0'),
-    correction = cms.PSet(
-        formula = cms.string("-([0] + [1]*x)*(1.0 + TMath::Erf(-[2]*TMath::Power(x, [3])))"),
-        par0 = cms.double(0.),
-        par1 = cms.double(-0.703151),
-        par2 = cms.double(0.0303531),
-        par3 = cms.double(0.909209)
-    ),
-    minDz = cms.double(0.2) # [cm], minimum distance required between pile-up vertices and "hard scatter" vertex
-)
+process.corrPfMetType0PfCand = process.pfMETcorrType0.clone()
 
 ##____________________________________________________________________________||
-# process.load("JetMETCorrections.Type1MET.caloMETCorrections_cff")
-process.corrCaloMetType1 = cms.EDProducer(
-    "CaloJetMETcorrInputProducer",
-    src = cms.InputTag('ak5CaloJets'),
-    jetCorrLabel = cms.string("ak5CaloL2L3"), # NOTE: use "ak5CaloL2L3" for MC / "ak5CaloL2L3Residual" for Data
-    jetCorrEtaMax = cms.double(9.9),
-    type1JetPtThreshold = cms.double(20.0),
-    skipEM = cms.bool(True),
-    skipEMfractionThreshold = cms.double(0.90),
-    srcMET = cms.InputTag('corMetGlobalMuons')
-)
+process.load("JetMETCorrections.Type1MET.caloMETCorrections_cff")
+process.corrCaloMetType1 = process.caloJetMETcorr.clone()
 
-process.muonCaloMETcorr = cms.EDProducer(
-    "MuonMETcorrInputProducer",
-    src = cms.InputTag('muons'),
-    srcMuonCorrections = cms.InputTag('muonMETValueMapProducer', 'muCorrData')
-)
+##____________________________________________________________________________||
+process.corrCaloMetType2 = cms.EDProducer(
+    "Type2CorrectionProducer",
+    srcUnclEnergySums = cms.VInputTag(
+        cms.InputTag('corrCaloMetType1', 'type2'),
+        cms.InputTag('muonCaloMETcorr') # NOTE: use 'muonCaloMETcorr' for 'corMetGlobalMuons', do **not** use it for 'met' !!
+        ),
+    type2CorrFormula = cms.string("A + B*TMath::Exp(-C*x)"),
+    type2CorrParameter = cms.PSet(
+        A = cms.double(2.0),
+        B = cms.double(1.3),
+        C = cms.double(0.1)
+        )
+    )
+
+process.corrPfMetType2 = cms.EDProducer(
+    "Type2CorrectionProducer",
+    srcUnclEnergySums = cms.VInputTag(
+        cms.InputTag('corrPfMetType1', 'type2'),
+        cms.InputTag('corrPfMetType1', 'offset'),
+        cms.InputTag('pfCandMETcorr')
+    ),
+    type2CorrFormula = cms.string("A"),
+    type2CorrParameter = cms.PSet(
+        A = cms.double(1.4)
+        )
+    )
+
+process.corrPfMetType0RecoTrack = cms.EDProducer(
+    "ScaleCorrMETData",
+    src = cms.InputTag('pfchsMETcorr', 'type0'),
+    scaleFactor = cms.double(1 - 0.6)
+    )
+
+process.corrPfMetType0RecoTrackForType2 = cms.EDProducer(
+    "ScaleCorrMETData",
+    src = cms.InputTag('corrPfMetType0RecoTrack'),
+    scaleFactor = cms.double(1.4)
+    )
+
+##____________________________________________________________________________||
+process.load("JetMETCorrections.Type1MET.pfMETsysShiftCorrections_cfi")
+process.corrPfMetShiftXY = process.pfMEtSysShiftCorr.clone()
+process.corrPfMetShiftXYSequence = cms.Sequence(process.selectedVerticesForMEtCorr * process.corrPfMetShiftXY)
+
+# process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012runABCDvsNvtx_data
+process.corrPfMetShiftXY.parameter = process.pfMEtSysShiftCorrParameters_2012runABCDvsNvtx_mc
 
 ##____________________________________________________________________________||
 process.p = cms.Path(
@@ -115,7 +115,12 @@ process.p = cms.Path(
     process.corrCaloMetType1 +
     process.muonCaloMETcorr +
     process.type0PFMEtCorrectionPFCandToVertexAssociation +
-    process.corrPfMetType0PfCand
+    process.corrPfMetType0PfCand +
+    process.corrPfMetType0RecoTrack +
+    process.corrPfMetType0RecoTrackForType2 +
+    process.corrPfMetType2 +
+    process.corrPfMetShiftXYSequence +
+    process.corrCaloMetType2
 )
 
 process.e1 = cms.EndPath(
