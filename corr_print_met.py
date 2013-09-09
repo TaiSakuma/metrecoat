@@ -44,16 +44,24 @@ def count(inputPath):
     handleMETs = Handle("std::vector<reco::MET>") 
 
     METCollections = (
-        ("caloType1CorrectedMet"    ,"" ,"TEST", handleCaloMETs ),
-        ("caloType1p2CorrectedMet"  ,"" ,"TEST", handleCaloMETs ),
-        ("pfType0CorrectedMet"      ,"" ,"TEST", handlePFMETs   ),
-        ("pfType0p1CorrectedMet"    ,"" ,"TEST", handlePFMETs   ),
-        ("pfType0p1p2CorrectedMet"  ,"" ,"TEST", handlePFMETs   ),
-        ("pfType0p2CorrectedMet"    ,"" ,"TEST", handlePFMETs   ),
-        ("pfType0pfcCorrectedMet"   ,"" ,"TEST", handlePFMETs   ),
-        ("pfType0pfcp1CorrectedMet" ,"" ,"TEST", handlePFMETs   ),
-        ("pfType1CorrectedMet"      ,"" ,"TEST", handlePFMETs   ),
-        ("pfType1p2CorrectedMet"    ,"" ,"TEST", handlePFMETs   ),
+        ("caloMetT1",        "", "TEST", handleCaloMETs ),
+        ("caloMetT1T2",      "", "TEST", handleCaloMETs ),
+        ("pfMetT0rt",        "", "TEST", handlePFMETs   ),
+        ("pfMetT0rtT1",      "", "TEST", handlePFMETs   ),
+        ("pfMetT0rtT1T2",    "", "TEST", handlePFMETs   ),
+        ("pfMetT0rtT2",      "", "TEST", handlePFMETs   ),
+        ("pfMetT0pc",        "", "TEST", handlePFMETs   ),
+        ("pfMetT0pcT1",      "", "TEST", handlePFMETs   ),
+        ("pfMetT1",          "", "TEST", handlePFMETs   ),
+        ("pfMetT1T2",        "", "TEST", handlePFMETs   ),
+        ("pfMetT0rtTxy",     "", "TEST", handlePFMETs   ),
+        ("pfMetT0rtT1Txy",   "", "TEST", handlePFMETs   ),
+        ("pfMetT0rtT1T2Txy", "", "TEST", handlePFMETs   ),
+        ("pfMetT0rtT2Txy",   "", "TEST", handlePFMETs   ),
+        ("pfMetT0pcTxy",     "", "TEST", handlePFMETs   ),
+        ("pfMetT0pcT1Txy",   "", "TEST", handlePFMETs   ),
+        ("pfMetT1Txy",       "", "TEST", handlePFMETs   ),
+        ("pfMetT1T2Txy",     "", "TEST", handlePFMETs   ),
         )
 
 
