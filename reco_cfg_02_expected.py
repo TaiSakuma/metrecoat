@@ -59,6 +59,9 @@ process.tcMetCST.correctShowerTracks = cms.bool(True)
 process.tcMetRft2 = process.tcMet.clone()
 process.tcMetRft2.rf_type = cms.int32(2)
 
+process.tcMetVedu = process.tcMet.clone()
+process.tcMetVedu.vetoDuplicates = cms.bool(True)
+
 ##____________________________________________________________________________||
 process.p = cms.Path(
     process.genMetCalo *
@@ -82,6 +85,7 @@ process.p = cms.Path(
     process.tcMet *
     process.tcMetCST *
     process.tcMetRft2 *
+    process.tcMetVedu *
     process.tcMetWithPFclusters *
     process.pfMet*
     process.pfClusterMet *
