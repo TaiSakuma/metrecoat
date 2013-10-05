@@ -53,6 +53,13 @@ process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(options.maxEv
 # process.pfMet.globalThreshold = cms.double(5.0)
 
 ##____________________________________________________________________________||
+process.tcMetCST = process.tcMet.clone()
+process.tcMetCST.correctShowerTracks = cms.bool(True)
+
+process.tcMetRft2 = process.tcMet.clone()
+process.tcMetRft2.rf_type = cms.int32(2)
+
+##____________________________________________________________________________||
 process.p = cms.Path(
     process.genMetCalo *
     process.genMetCaloAndNonPrompt * 
@@ -73,6 +80,8 @@ process.p = cms.Path(
     # process.htMetAK7 *
     process.corMetGlobalMuons *
     process.tcMet *
+    process.tcMetCST *
+    process.tcMetRft2 *
     process.tcMetWithPFclusters *
     process.pfMet*
     process.pfClusterMet *

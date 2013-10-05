@@ -66,6 +66,8 @@ def count(inputPath):
         # ("htMetKT4"               ,"" ,"METP" ,handleMETs      ),
         ("htMetKT6"               ,"" ,"METP" ,handleMETs      ),
         ("tcMet"                  ,"" ,"METP" ,handleMETs      ),
+        ("tcMetCST"               ,"" ,"METP" ,handleMETs      ),
+        ("tcMetRft2"              ,"" ,"METP" ,handleMETs      ),
         ("tcMetWithPFclusters"    ,"" ,"METP" ,handleMETs      ),
         ("pfChargedMET"           ,"" ,"METP" ,handlePFMETs    ),
         )

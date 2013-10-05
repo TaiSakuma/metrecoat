@@ -80,6 +80,20 @@ class METProducerTest(unittest.TestCase):
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
         self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
+    def test_recoMETs_tcMetCST(self):
+        label = ("tcMetCST", "", "METP")
+        exHandle = self.exHandleMETs
+        acHandle = self.acHandleMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+    def test_recoMETs_tcMetRft2(self):
+        label = ("tcMetRft2", "", "METP")
+        exHandle = self.exHandleMETs
+        acHandle = self.acHandleMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
     def test_recoMETs_tcMetWithPFclusters(self):
         label = ("tcMetWithPFclusters", "", "METP")
         exHandle = self.exHandleMETs
