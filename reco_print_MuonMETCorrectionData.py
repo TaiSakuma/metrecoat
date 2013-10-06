@@ -39,12 +39,7 @@ def count(inputPath):
 
     handleValueMap = Handle("edm::ValueMap<reco::MuonMETCorrectionData>")
 
-    handleGenMETs = Handle("std::vector<reco::GenMET>") 
-    handlePFMETs = Handle("std::vector<reco::PFMET>") 
-    handleCaloMETs = Handle("std::vector<reco::CaloMET>") 
-    handleMETs = Handle("std::vector<reco::MET>") 
-
-    handleMuons = Handle("std::vector<reco::Muon>") 
+    # handleMuons = Handle("std::vector<reco::Muon>") 
 
     ValueMaps = (
         ("muonMETValueMapProducer",   "muCorrData", "METP", handleValueMap),
@@ -59,7 +54,7 @@ def count(inputPath):
         lumi = event.eventAuxiliary().luminosityBlock()
         eventId = event.eventAuxiliary().event()
 
-        event.getByLabel("muons", handleMuons)
+        # event.getByLabel("muons", handleMuons)
 
         # ROOT.reco.MuonRef
         # It is not clear how to initialize ROOT.reco.MuonRef with reco::Muon.
