@@ -247,20 +247,19 @@ class METProducerTest(unittest.TestCase):
     def assert_recoPFMET(self, actual, expected):
         # double
         self.assertEqual(actual.photonEtFraction()        , expected.photonEtFraction()        )
-        self.assertEqual(actual.photonEt()                , expected.photonEt()                )
+        self.assertAlmostEqual(actual.photonEt()          , expected.photonEt()                , 10)
         self.assertEqual(actual.neutralHadronEtFraction() , expected.neutralHadronEtFraction() )
-        self.assertEqual(actual.neutralHadronEt()         , expected.neutralHadronEt()         )
+        self.assertAlmostEqual(actual.neutralHadronEt()   , expected.neutralHadronEt()         , 10)
         self.assertEqual(actual.electronEtFraction()      , expected.electronEtFraction()      )
-        self.assertEqual(actual.electronEt()              , expected.electronEt()              )
+        self.assertAlmostEqual(actual.electronEt()        , expected.electronEt()              , 10)
         self.assertEqual(actual.chargedHadronEtFraction() , expected.chargedHadronEtFraction() )
-        self.assertEqual(actual.chargedHadronEt()         , expected.chargedHadronEt()         )
+        self.assertAlmostEqual(actual.chargedHadronEt()   , expected.chargedHadronEt()         , 10)
         self.assertEqual(actual.muonEtFraction()          , expected.muonEtFraction()          )
-        self.assertEqual(actual.muonEt()                  , expected.muonEt()                  )
+        self.assertAlmostEqual(actual.muonEt()            , expected.muonEt()                  , 10)
         self.assertEqual(actual.HFHadronEtFraction()      , expected.HFHadronEtFraction()      )
-        self.assertEqual(actual.HFHadronEt()              , expected.HFHadronEt()              )
+        self.assertAlmostEqual(actual.HFHadronEt()        , expected.HFHadronEt()              , 10)
         self.assertEqual(actual.HFEMEtFraction()          , expected.HFEMEtFraction()          )
-        self.assertEqual(actual.HFEMEt()                  , expected.HFEMEt()                  )
-
+        self.assertAlmostEqual(actual.HFEMEt()            , expected.HFEMEt()                  , 10)
 
     def assert_recoGenMET(self, actual, expected):
         # double
@@ -302,8 +301,8 @@ class METProducerTest(unittest.TestCase):
     def assert_recoMET(self, actual, expected):
 
         # double
-        self.assertEqual(actual.sumEt()           , expected.sumEt()          )
-        self.assertEqual(actual.mEtSig()          , expected.mEtSig()         )
+        self.assertAlmostEqual(actual.sumEt()     , expected.sumEt()          , 10)
+        self.assertAlmostEqual(actual.mEtSig()    , expected.mEtSig()         , 10)
         self.assertEqual(actual.significance()    , expected.significance()   )
         self.assertEqual(actual.e_longitudinal()  , expected.e_longitudinal() )
 
