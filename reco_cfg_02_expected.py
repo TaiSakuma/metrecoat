@@ -77,7 +77,7 @@ process.p = cms.Path(
     process.metOptHO *
     process.metOptNoHFHO *
     # process.htMetKT4 *
-    process.htMetKT6 *
+    # process.htMetKT6 *
     # process.htMetIC5 *
     process.htMetAK5 * 
     # process.htMetAK7 *
