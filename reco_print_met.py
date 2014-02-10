@@ -64,7 +64,7 @@ def count(inputPath):
         # ("htMetAK7"               ,"" ,"METP" ,handleMETs      ),
         # ("htMetIC5"               ,"" ,"METP" ,handleMETs      ),
         # ("htMetKT4"               ,"" ,"METP" ,handleMETs      ),
-        ("htMetKT6"               ,"" ,"METP" ,handleMETs      ),
+        # ("htMetKT6"               ,"" ,"METP" ,handleMETs      ),
         ("tcMet"                  ,"" ,"METP" ,handleMETs      ),
         ("tcMetCST"               ,"" ,"METP" ,handleMETs      ),
         ("tcMetRft2"              ,"" ,"METP" ,handleMETs      ),
