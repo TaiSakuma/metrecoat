@@ -34,6 +34,7 @@ process.out = cms.OutputModule(
         'keep recoPFCandidates_particleFlow__*',
         'keep recoPFJets_ak5PFJets__*',
         'keep double_kt6PFJets_rho_*',
+        'keep double_fixedGridRhoFastjetAll__*',
         'keep recoVertexs_offlinePrimaryVertices__*',
         'keep recoTracks_generalTracks__*',
         'keep recoTrackExtras_generalTracks__*',
