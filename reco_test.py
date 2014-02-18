@@ -129,12 +129,12 @@ class METProducerTest(unittest.TestCase):
     #     candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
     #     self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
-    def test_recoMETs_htMetKT6(self):
-        label = ("htMetKT6", "", "METP")
-        exHandle = self.exHandleMETs
-        acHandle = self.acHandleMETs
-        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+    # def test_recoMETs_htMetKT6(self):
+    #     label = ("htMetKT6", "", "METP")
+    #     exHandle = self.exHandleMETs
+    #     acHandle = self.acHandleMETs
+    #     candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
+    #     self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
     # def test_recoMETs_htMetIC5(self):
     #     label = ("htMetIC5", "", "METP")
