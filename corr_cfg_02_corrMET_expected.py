@@ -63,7 +63,7 @@ process.e1 = cms.EndPath(
     )
 
 ##____________________________________________________________________________||
-processDumpFile = open('processDump-corr_cfg_03_corrMET_expected.py', 'w')
+processDumpFile = open('processDump-corr_cfg_02_corrMET_expected.py', 'w')
 print >> processDumpFile, process.dumpPython()
 
 ##____________________________________________________________________________||

@@ -3,7 +3,7 @@ import FWCore.ParameterSet.Config as cms
 ##____________________________________________________________________________||
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
-options.inputFiles = 'file:corr_inputs.root', 
+options.inputFiles = 'file:CMSSW_7_1_0_pre2-PU50ns_POSTLS170_V4-v1_GEN-SIM-RECO_numEvent100.root', 
 options.outputFile = 'corr_terms_actual.root'
 options.maxEvents = -1
 options.parseArguments()
@@ -33,7 +33,13 @@ process.out = cms.OutputModule(
     "PoolOutputModule",
     fileName = cms.untracked.string(options.outputFile),
     SelectEvents   = cms.untracked.PSet( SelectEvents = cms.vstring('p') ),
-    outputCommands = cms.untracked.vstring('keep *')
+    outputCommands = cms.untracked.vstring(
+        'drop *',
+        'keep recoGenMETs_*_*_*',
+        'keep recoCaloMETs_*_*_*',
+        'keep recoMETs_*_*_*',
+        'keep recoPFMETs_*_*_*',
+        'keep *_*_*_CORR')
     )
 
 ##____________________________________________________________________________||
@@ -73,7 +79,7 @@ process.e1 = cms.EndPath(
     )
 
 ##____________________________________________________________________________||
-processDumpFile = open('processDump-corr_cfg_04_corrTerms_actual.py', 'w')
+processDumpFile = open('processDump-corr_corr_cfg_03_actual.py', 'w')
 print >> processDumpFile, process.dumpPython()
 
 ##____________________________________________________________________________||
