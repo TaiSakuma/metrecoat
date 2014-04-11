@@ -263,10 +263,6 @@ class METProducerTest(unittest.TestCase):
         for a, e in zip(actual.dsumEt(), expected.dsumEt()):
             self.assertEqual(a , e)
 
-        self.assertEqual(actual.dSignificance().size()  , expected.dSignificance().size())
-        for a, e in zip(actual.dSignificance(), expected.dSignificance()):
-            self.assertEqual(a , e)
-
         self.assertEqual(actual.mEtCorr().size(), expected.mEtCorr().size())
         for a, e in zip(actual.mEtCorr(), expected.mEtCorr()):
             # self.assertEqual(a.mex          , e.mex)
