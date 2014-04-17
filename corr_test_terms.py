@@ -111,7 +111,6 @@ class METProducerTest(unittest.TestCase):
             self.assertAlmostEqual(acCorr.mex, exCorr.mex, 12)
             self.assertAlmostEqual(acCorr.mey, exCorr.mey, 12)
             self.assertAlmostEqual(acCorr.sumet, exCorr.sumet, 12)
-            self.assertAlmostEqual(acCorr.significance, exCorr.significance, 12)
 
 ##____________________________________________________________________________||
 class ROOT_STL_Test(unittest.TestCase):
