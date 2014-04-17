@@ -13,7 +13,9 @@ process = cms.Process("METP")
 
 ##____________________________________________________________________________||
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
+process.load("Configuration.StandardSequences.Geometry_cff")
 process.load("Configuration.StandardSequences.MagneticField_cff")
+process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 
 ##____________________________________________________________________________||
 process.load("RecoMET.Configuration.RecoGenMET_cff")
@@ -26,6 +28,10 @@ process.load("RecoMET.METProducers.pfChargedMET_cfi")
 
 ##____________________________________________________________________________||
 process.load("RecoMET/METProducers/PFClusterMET_cfi")
+
+##____________________________________________________________________________||
+from Configuration.AlCa.GlobalTag import GlobalTag
+process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:startup', '')
 
 ##____________________________________________________________________________||
 process.source = cms.Source(
@@ -62,6 +68,9 @@ process.tcMetRft2.rf_type = cms.int32(2)
 process.tcMetVedu = process.tcMet.clone()
 process.tcMetVedu.vetoDuplicates = cms.bool(True)
 
+process.tcMetPvtx = process.tcMet.clone()
+process.tcMetPvtx.usePvtxd0 = cms.bool(True)
+
 ##____________________________________________________________________________||
 process.p = cms.Path(
     process.genMetCalo *
@@ -81,11 +90,14 @@ process.p = cms.Path(
     # process.htMetIC5 *
     process.htMetAK5 * 
     # process.htMetAK7 *
+    process.muonMETValueMapProducer *
+    process.muonTCMETValueMapProducer *
     process.corMetGlobalMuons *
     process.tcMet *
     process.tcMetCST *
     process.tcMetRft2 *
     process.tcMetVedu *
+    process.tcMetPvtx *
     process.tcMetWithPFclusters *
     process.pfMet*
     process.pfClusterMet *

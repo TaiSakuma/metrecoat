@@ -35,6 +35,9 @@ class METProducerTest(unittest.TestCase):
         self.acHandleMETs = Handle("std::vector<reco::MET>") 
         self.acHandlePFClusterMETs = Handle("std::vector<reco::PFClusterMET>") 
 
+        self.exHandleMuonMETCorrectionData = Handle("edm::ValueMap<reco::MuonMETCorrectionData>")
+        self.acHandleMuonMETCorrectionData = Handle("edm::ValueMap<reco::MuonMETCorrectionData>")
+
     def test_n_events(self):
         self.assertEqual(self.exEvents.size(), self.acEvents.size())
 
@@ -96,6 +99,13 @@ class METProducerTest(unittest.TestCase):
 
     def test_recoMETs_tcMetVedu(self):
         label = ("tcMetVedu", "", "METP")
+        exHandle = self.exHandleMETs
+        acHandle = self.acHandleMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
+        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+    def test_recoMETs_tcMetPvtx(self):
+        label = ("tcMetPvtx", "", "METP")
         exHandle = self.exHandleMETs
         acHandle = self.acHandleMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
@@ -219,6 +229,19 @@ class METProducerTest(unittest.TestCase):
         acHandle = self.acHandlePFMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
         self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+
+
+    def test_muonMETValueMapProducer(self):
+        label = ("muonMETValueMapProducer", "muCorrData", "METP")
+        exHandle = self.exHandleMuonMETCorrectionData
+        acHandle = self.acHandleMuonMETCorrectionData
+        self.assert_valuemap_MuonMETCorrectionData(label, exHandle, acHandle)
+
+    def test_muonTCMETValueMapProducer(self):
+        label = ("muonTCMETValueMapProducer", "muCorrData", "METP")
+        exHandle = self.exHandleMuonMETCorrectionData
+        acHandle = self.acHandleMuonMETCorrectionData
+        self.assert_valuemap_MuonMETCorrectionData(label, exHandle, acHandle)
 
 
     def assert_collection(self, label, exHandle, acHandle, candidateAssertMethods):
@@ -392,6 +415,34 @@ class METProducerTest(unittest.TestCase):
         self.assertEqual(actual.isConvertedPhoton()     , expected.isConvertedPhoton()     )
         self.assertEqual(actual.isJet()                 , expected.isJet()                 )
 
+
+    def assert_valuemap_MuonMETCorrectionData(self, label, exHandle, acHandle):
+
+        exEventIter = self.exEvents.__iter__()
+        acEventIter = self.acEvents.__iter__()
+
+        nevents = min(self.exEvents.size(), self.acEvents.size())
+        for i in range(nevents):
+            exEvent = exEventIter.next()
+            acEvent = acEventIter.next()
+
+            exEvent.getByLabel(label, exHandle)
+            exMuonMETCorrectionData = exHandle.product()
+
+            acEvent.getByLabel(label, acHandle)
+            acMuonMETCorrectionData = acHandle.product()
+
+            self.assertEqual(acMuonMETCorrectionData.size(), exMuonMETCorrectionData.size())
+
+            for i in range(exMuonMETCorrectionData.size()):
+                expected = exMuonMETCorrectionData.get(i)
+                actual = acMuonMETCorrectionData.get(i)
+                self.assertEqual(actual.type()  , expected.type()  )
+                self.assertEqual(actual.corrX() , expected.corrX() )
+                self.assertEqual(actual.corrY() , expected.corrY() )
+                self.assertEqual(actual.x()     , expected.x()     )
+                self.assertEqual(actual.y()     , expected.y()     )
+                self.assertEqual(actual.pt()    , expected.pt()    )
 
 ##____________________________________________________________________________||
 class ROOT_STL_Test(unittest.TestCase):
