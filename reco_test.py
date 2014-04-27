@@ -286,18 +286,18 @@ class METProducerTest(unittest.TestCase):
 
     def assert_recoGenMET(self, actual, expected):
         # double
-        self.assertEqual(actual.NeutralEMEtFraction()    , expected.NeutralEMEtFraction()   )
-        self.assertEqual(actual.NeutralEMEt()            , expected.NeutralEMEt()           )
-        self.assertEqual(actual.ChargedEMEtFraction()    , expected.ChargedEMEtFraction()   )
-        self.assertEqual(actual.ChargedEMEt()            , expected.ChargedEMEt()           )
-        self.assertEqual(actual.NeutralHadEtFraction()   , expected.NeutralHadEtFraction()  )
-        self.assertEqual(actual.NeutralHadEt()           , expected.NeutralHadEt()          )
-        self.assertEqual(actual.ChargedHadEtFraction()   , expected.ChargedHadEtFraction()  )
-        self.assertEqual(actual.ChargedHadEt()           , expected.ChargedHadEt()          )
-        self.assertEqual(actual.MuonEtFraction()         , expected.MuonEtFraction()        )
-        self.assertEqual(actual.MuonEt()                 , expected.MuonEt()                )
-        self.assertEqual(actual.InvisibleEtFraction()    , expected.InvisibleEtFraction()   )
-        self.assertEqual(actual.InvisibleEt()            , expected.InvisibleEt()           )
+        self.assertAlmostEqual(actual.NeutralEMEtFraction()    , expected.NeutralEMEtFraction()  , 7)
+        self.assertAlmostEqual(actual.NeutralEMEt()            , expected.NeutralEMEt()          , 7)
+        self.assertAlmostEqual(actual.ChargedEMEtFraction()    , expected.ChargedEMEtFraction()  , 7)
+        self.assertAlmostEqual(actual.ChargedEMEt()            , expected.ChargedEMEt()          , 7)
+        self.assertAlmostEqual(actual.NeutralHadEtFraction()   , expected.NeutralHadEtFraction() , 7)
+        self.assertAlmostEqual(actual.NeutralHadEt()           , expected.NeutralHadEt()         , 7)
+        self.assertAlmostEqual(actual.ChargedHadEtFraction()   , expected.ChargedHadEtFraction() , 7)
+        self.assertAlmostEqual(actual.ChargedHadEt()           , expected.ChargedHadEt()         , 7)
+        self.assertAlmostEqual(actual.MuonEtFraction()         , expected.MuonEtFraction()       , 7)
+        self.assertAlmostEqual(actual.MuonEt()                 , expected.MuonEt()               , 7)
+        self.assertAlmostEqual(actual.InvisibleEtFraction()    , expected.InvisibleEtFraction()  , 7)
+        self.assertAlmostEqual(actual.InvisibleEt()            , expected.InvisibleEt()          , 7)
 
     def assert_recoCaloMET(self, actual, expected):
 
