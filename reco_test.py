@@ -16,6 +16,8 @@ parser.add_option('-e', '--expectedPath', default = './reco_expected.root', acti
 parser.add_option('-a', '--actualPath', default = './reco_actual.root', action = 'store', type = 'string')
 (options, args) = parser.parse_args(sys.argv)
 
+sys.argv = args
+
 ##____________________________________________________________________________||
 class METProducerTest(unittest.TestCase):
 
