@@ -51,6 +51,14 @@ class METProducerTest(unittest.TestCase):
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
         self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
+    def test_recoPFMETs_pfChargedMET(self):
+        exLabel = ("pfChargedMET" ,"" ,"METP")
+        acLabel = exLabel
+        exHandle = self.exHandlePFMETs
+        acHandle = self.acHandlePFMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
+
     def test_recoGenMETs_genMetTrue(self):
         exLabel = ("genMetTrue" ,"" ,"METP")
         acLabel = exLabel
@@ -217,14 +225,6 @@ class METProducerTest(unittest.TestCase):
         exHandle = self.exHandlePFClusterMETs
         acHandle = self.acHandlePFClusterMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
-
-    def test_recoPFMETs_pfChargedMET(self):
-        exLabel = ("pfChargedMET" ,"" ,"METP")
-        acLabel = exLabel
-        exHandle = self.exHandlePFMETs
-        acHandle = self.acHandlePFMETs
-        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
         self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
 
