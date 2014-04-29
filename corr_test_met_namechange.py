@@ -111,14 +111,14 @@ class METProducerTest(unittest.TestCase):
     def test_recoCaloMETs_caloType1CorrectedMet(self):
         label = ("caloType1CorrectedMet", "" ,"TEST")
         exHandle = self.exHandleCaloMETs
-        acHandle = self.exHandleCaloMETs
+        acHandle = self.acHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
         self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_caloType1p2CorrectedMet(self):
         label = ("caloType1p2CorrectedMet", "" ,"TEST")
         exHandle = self.exHandleCaloMETs
-        acHandle = self.exHandleCaloMETs
+        acHandle = self.acHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
         self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
 
