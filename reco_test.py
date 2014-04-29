@@ -44,181 +44,206 @@ class METProducerTest(unittest.TestCase):
         self.assertEqual(self.exEvents.size(), self.acEvents.size())
 
     def test_recoPFMETs_pfMet(self):
-        label = ("pfMet" ,"" ,"METP")
+        exLabel = ("pfMet" ,"" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandlePFMETs
         acHandle = self.acHandlePFMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoGenMETs_genMetTrue(self):
-        label = ("genMetTrue" ,"" ,"METP")
+        exLabel = ("genMetTrue" ,"" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleGenMETs
         acHandle = self.acHandleGenMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoGenMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoGenMETs_genMetCalo(self):
-        label = ("genMetCalo" ,"" ,"METP")
+        exLabel = ("genMetCalo" ,"" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleGenMETs
         acHandle = self.acHandleGenMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoGenMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoGenMETs_genMetCaloAndNonPrompt(self):
-        label = ("genMetCaloAndNonPrompt" ,"" ,"METP")
+        exLabel = ("genMetCaloAndNonPrompt" ,"" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleGenMETs
         acHandle = self.acHandleGenMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoGenMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoMETs_genMetIC5GenJets(self):
-        label = ("genMetIC5GenJets", "", "METP")
+        exLabel = ("genMetIC5GenJets", "", "METP")
+        acLabel = exLabel
         exHandle = self.exHandleMETs
         acHandle = self.acHandleMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoMETs_tcMet(self):
-        label = ("tcMet", "", "METP")
+        exLabel = ("tcMet", "", "METP")
+        acLabel = exLabel
         exHandle = self.exHandleMETs
         acHandle = self.acHandleMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoMETs_tcMetCST(self):
-        label = ("tcMetCST", "", "METP")
+        exLabel = ("tcMetCST", "", "METP")
+        acLabel = exLabel
         exHandle = self.exHandleMETs
         acHandle = self.acHandleMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoMETs_tcMetRft2(self):
-        label = ("tcMetRft2", "", "METP")
+        exLabel = ("tcMetRft2", "", "METP")
+        acLabel = exLabel
         exHandle = self.exHandleMETs
         acHandle = self.acHandleMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoMETs_tcMetVedu(self):
-        label = ("tcMetVedu", "", "METP")
+        exLabel = ("tcMetVedu", "", "METP")
+        acLabel = exLabel
         exHandle = self.exHandleMETs
         acHandle = self.acHandleMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoMETs_tcMetPvtx(self):
-        label = ("tcMetPvtx", "", "METP")
+        exLabel = ("tcMetPvtx", "", "METP")
+        acLabel = exLabel
         exHandle = self.exHandleMETs
         acHandle = self.acHandleMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoMETs_tcMetWithPFclusters(self):
-        label = ("tcMetWithPFclusters", "", "METP")
+        exLabel = ("tcMetWithPFclusters", "", "METP")
+        acLabel = exLabel
         exHandle = self.exHandleMETs
         acHandle = self.acHandleMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoMETs_htMetAK5(self):
-        label = ("htMetAK5", "", "METP")
+        exLabel = ("htMetAK5", "", "METP")
+        acLabel = exLabel
         exHandle = self.exHandleMETs
         acHandle = self.acHandleMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_met(self):
-        label = ("met", "" ,"METP")
+        exLabel = ("met", "" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_metHO(self):
-        label = ("metHO", "" ,"METP")
+        exLabel = ("metHO", "" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_metNoHF(self):
-        label = ("metNoHF", "" ,"METP")
+        exLabel = ("metNoHF", "" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_metNoHFHO(self):
-        label = ("metNoHFHO", "" ,"METP")
+        exLabel = ("metNoHFHO", "" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_metOpt(self):
-        label = ("metOpt", "" ,"METP")
+        exLabel = ("metOpt", "" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_metOptHO(self):
-        label = ("metOptHO", "" ,"METP")
+        exLabel = ("metOptHO", "" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_metOptNoHF(self):
-        label = ("metOptNoHF", "" ,"METP")
+        exLabel = ("metOptNoHF", "" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_metOptNoHFHO(self):
-        label = ("metOptNoHFHO", "" ,"METP")
+        exLabel = ("metOptNoHFHO", "" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_corMetGlobalMuons(self):
-        label = ("corMetGlobalMuons", "" ,"METP")
+        exLabel = ("corMetGlobalMuons", "" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoPFClusterMETs_pfClusterMet(self):
-        label = ("pfClusterMet", "", "METP")
+        exLabel = ("pfClusterMet", "", "METP")
+        acLabel = exLabel
         exHandle = self.exHandlePFClusterMETs
         acHandle = self.acHandlePFClusterMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoPFMETs_pfChargedMET(self):
-        label = ("pfChargedMET" ,"" ,"METP")
+        exLabel = ("pfChargedMET" ,"" ,"METP")
+        acLabel = exLabel
         exHandle = self.exHandlePFMETs
         acHandle = self.acHandlePFMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
-        self.assert_collection(label, exHandle, acHandle, candidateAssertMethods)
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
 
     def test_muonMETValueMapProducer(self):
-        label = ("muonMETValueMapProducer", "muCorrData", "METP")
+        exLabel = ("muonMETValueMapProducer", "muCorrData", "METP")
+        acLabel = exLabel
         exHandle = self.exHandleMuonMETCorrectionData
         acHandle = self.acHandleMuonMETCorrectionData
-        self.assert_valuemap_MuonMETCorrectionData(label, exHandle, acHandle)
+        self.assert_valuemap_MuonMETCorrectionData(exLabel, acLabel, exHandle, acHandle)
 
     def test_muonTCMETValueMapProducer(self):
-        label = ("muonTCMETValueMapProducer", "muCorrData", "METP")
+        exLabel = ("muonTCMETValueMapProducer", "muCorrData", "METP")
+        acLabel = exLabel
         exHandle = self.exHandleMuonMETCorrectionData
         acHandle = self.acHandleMuonMETCorrectionData
-        self.assert_valuemap_MuonMETCorrectionData(label, exHandle, acHandle)
+        self.assert_valuemap_MuonMETCorrectionData(exLabel, acLabel, exHandle, acHandle)
 
 
-    def assert_collection(self, label, exHandle, acHandle, candidateAssertMethods):
+    def assert_collection(self, exLabel, acLabel, exHandle, acHandle, candidateAssertMethods):
 
         exEventIter = self.exEvents.__iter__()
         acEventIter = self.acEvents.__iter__()
@@ -228,11 +253,11 @@ class METProducerTest(unittest.TestCase):
             exEvent = exEventIter.next()
             acEvent = acEventIter.next()
 
-            exEvent.getByLabel(label, exHandle)
+            exEvent.getByLabel(exLabel, exHandle)
             exMETs = exHandle.product()
             exMET = exMETs.front()
 
-            acEvent.getByLabel(label, acHandle)
+            acEvent.getByLabel(acLabel, acHandle)
             acMETs = acHandle.product()
 
             self.assertEqual(acMETs.size(), 1)
@@ -390,7 +415,7 @@ class METProducerTest(unittest.TestCase):
         self.assertEqual(actual.isJet()                 , expected.isJet()                 )
 
 
-    def assert_valuemap_MuonMETCorrectionData(self, label, exHandle, acHandle):
+    def assert_valuemap_MuonMETCorrectionData(self, exLabel, acLabel, exHandle, acHandle):
 
         exEventIter = self.exEvents.__iter__()
         acEventIter = self.acEvents.__iter__()
@@ -400,10 +425,10 @@ class METProducerTest(unittest.TestCase):
             exEvent = exEventIter.next()
             acEvent = acEventIter.next()
 
-            exEvent.getByLabel(label, exHandle)
+            exEvent.getByLabel(exLabel, exHandle)
             exMuonMETCorrectionData = exHandle.product()
 
-            acEvent.getByLabel(label, acHandle)
+            acEvent.getByLabel(acLabel, acHandle)
             acMuonMETCorrectionData = acHandle.product()
 
             self.assertEqual(acMuonMETCorrectionData.size(), exMuonMETCorrectionData.size())
