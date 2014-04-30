@@ -51,6 +51,14 @@ class METProducerTest(unittest.TestCase):
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
         self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
+    def test_recoPFMETs_pfChMet_pfChargedMET(self):
+        exLabel = ("pfChargedMET" ,"" ,"METP")
+        acLabel = ("pfChMet" ,"" ,"METP")
+        exHandle = self.exHandlePFMETs
+        acHandle = self.acHandlePFMETs
+        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoPFMET')
+        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
+
     def test_recoPFMETs_pfChargedMET(self):
         exLabel = ("pfChargedMET" ,"" ,"METP")
         acLabel = exLabel

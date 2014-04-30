@@ -24,7 +24,7 @@ process.load("RecoMET.Configuration.RecoPFMET_cff")
 
 
 process.load("RecoMET.METProducers.HTMET_cfi")
-process.load("RecoMET.METProducers.pfChargedMET_cfi")
+process.load("RecoMET.METProducers.pfChMet_cfi")
 
 ##____________________________________________________________________________||
 process.load("RecoMET/METProducers/PFClusterMET_cfi")
@@ -100,9 +100,9 @@ process.p = cms.Path(
     process.tcMetPvtx *
     process.tcMetWithPFclusters *
     process.pfMet*
-    process.pfClusterMet *
     process.particleFlowForChargedMET *
-    process.pfChargedMET
+    process.pfChMet *
+    process.pfClusterMet
 )
 
 process.e1 = cms.EndPath(
