@@ -20,11 +20,16 @@ process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 ##____________________________________________________________________________||
 process.load("RecoMET.Configuration.RecoGenMET_cff")
 process.load("RecoMET.Configuration.RecoMET_cff")
-process.load("RecoMET.Configuration.RecoPFMET_cff")
 
+process.load("RecoMET.METProducers.MuonTCMETValueMapProducer_cff")
+process.load("RecoMET.METProducers.TCMET_cfi")
 
 process.load("RecoMET.METProducers.HTMET_cfi")
+
+process.load("RecoMET/METProducers.PFMET_cfi")
 process.load("RecoMET.METProducers.pfChMet_cfi")
+
+process.load("RecoMET/METProducers.METSigParams_cfi")
 
 ##____________________________________________________________________________||
 process.load("RecoMET/METProducers/PFClusterMET_cfi")
@@ -59,6 +64,12 @@ process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(options.maxEv
 # process.pfMet.globalThreshold = cms.double(5.0)
 
 ##____________________________________________________________________________||
+process.pfMetWithSignificance = process.pfMet.clone(
+    process.METSignificance_params,
+    calculateSignificance = cms.bool(True),
+    jets = cms.InputTag("ak5PFJets")
+    )
+
 process.tcMetCST = process.tcMet.clone()
 process.tcMetCST.correctShowerTracks = cms.bool(True)
 
@@ -100,6 +111,7 @@ process.p = cms.Path(
     process.tcMetPvtx *
     process.tcMetWithPFclusters *
     process.pfMet*
+    process.pfMetWithSignificance *
     process.particleFlowForChargedMET *
     process.pfChMet *
     process.pfClusterMet
