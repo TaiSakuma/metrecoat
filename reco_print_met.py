@@ -47,21 +47,23 @@ def count(inputPath):
     handleMETs = Handle("std::vector<reco::MET>") 
 
     METCollections = (
-        ("genMetCalo"             ,"" ,"METP" ,handleGenMETs   ),
-        ("genMetCaloAndNonPrompt" ,"" ,"METP" ,handleGenMETs   ),
-        ("genMetTrue"             ,"" ,"METP" ,handleGenMETs   ),
-        ("pfMet"                  ,"" ,"METP" ,handlePFMETs    ),
-        ("pfChMet"                ,"" ,"METP" ,handlePFMETs    ),
-        ("caloMet"                ,"" ,"METP" ,handleCaloMETs  ),
-        ("caloMetBEFO"            ,"" ,"METP" ,handleCaloMETs  ),
-        ("caloMetBE"              ,"" ,"METP" ,handleCaloMETs  ),
-        ("caloMetBEO"             ,"" ,"METP" ,handleCaloMETs  ),
-        ("corMetGlobalMuons"      ,"" ,"METP" ,handleCaloMETs  ),
-        ("tcMet"                  ,"" ,"METP" ,handleMETs      ),
-        ("tcMetCST"               ,"" ,"METP" ,handleMETs      ),
-        ("tcMetRft2"              ,"" ,"METP" ,handleMETs      ),
-        ("tcMetVedu"              ,"" ,"METP" ,handleMETs      ),
-        ("tcMetWithPFclusters"    ,"" ,"METP" ,handleMETs      ),
+        ("genMetCalo"              ,"" ,"METP" ,handleGenMETs   ),
+        ("genMetCaloAndNonPrompt"  ,"" ,"METP" ,handleGenMETs   ),
+        ("genMetTrue"              ,"" ,"METP" ,handleGenMETs   ),
+        ("pfMet"                   ,"" ,"METP" ,handlePFMETs    ),
+        ("pfMetWithSignificance"   ,"" ,"METP" ,handlePFMETs    ),
+        ("pfChMet"                 ,"" ,"METP" ,handlePFMETs    ),
+        ("caloMet"                 ,"" ,"METP" ,handleCaloMETs  ),
+        ("caloMetWithSignificance" ,"" ,"METP" ,handleCaloMETs  ),
+        ("caloMetBEFO"             ,"" ,"METP" ,handleCaloMETs  ),
+        ("caloMetBE"               ,"" ,"METP" ,handleCaloMETs  ),
+        ("caloMetBEO"              ,"" ,"METP" ,handleCaloMETs  ),
+        ("corMetGlobalMuons"       ,"" ,"METP" ,handleCaloMETs  ),
+        ("tcMet"                   ,"" ,"METP" ,handleMETs      ),
+        ("tcMetCST"                ,"" ,"METP" ,handleMETs      ),
+        ("tcMetRft2"               ,"" ,"METP" ,handleMETs      ),
+        ("tcMetVedu"               ,"" ,"METP" ,handleMETs      ),
+        ("tcMetWithPFclusters"     ,"" ,"METP" ,handleMETs      ),
         )
 
     firstEvent = True
