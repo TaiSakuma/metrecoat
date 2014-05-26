@@ -155,69 +155,69 @@ class METProducerTest(unittest.TestCase):
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET')
         self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
-    def test_recoCaloMETs_met(self):
+    def test_recoCaloMETs_caloMet(self):
         exLabel = ("met", "" ,"METP")
-        acLabel = exLabel
+        acLabel = ("caloMet", "" ,"METP")
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
         self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
-    def test_recoCaloMETs_metHO(self):
+    def test_recoCaloMETs_caloMetBEFO(self):
         exLabel = ("metHO", "" ,"METP")
-        acLabel = exLabel
+        acLabel = ("caloMetBEFO", "" ,"METP")
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
         self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
-    def test_recoCaloMETs_metNoHF(self):
+    def test_recoCaloMETs_caloMetBE(self):
         exLabel = ("metNoHF", "" ,"METP")
-        acLabel = exLabel
+        acLabel = ("caloMetBE", "" ,"METP")
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
         self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
-    def test_recoCaloMETs_metNoHFHO(self):
+    def test_recoCaloMETs_caloMetBEO(self):
         exLabel = ("metNoHFHO", "" ,"METP")
-        acLabel = exLabel
+        acLabel = ("caloMetBEO", "" ,"METP")
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
         self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
-    def test_recoCaloMETs_metOpt(self):
-        exLabel = ("metOpt", "" ,"METP")
-        acLabel = exLabel
-        exHandle = self.exHandleCaloMETs
-        acHandle = self.exHandleCaloMETs
-        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
-
-    def test_recoCaloMETs_metOptHO(self):
-        exLabel = ("metOptHO", "" ,"METP")
-        acLabel = exLabel
-        exHandle = self.exHandleCaloMETs
-        acHandle = self.exHandleCaloMETs
-        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
-
-    def test_recoCaloMETs_metOptNoHF(self):
-        exLabel = ("metOptNoHF", "" ,"METP")
-        acLabel = exLabel
-        exHandle = self.exHandleCaloMETs
-        acHandle = self.exHandleCaloMETs
-        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
-
-    def test_recoCaloMETs_metOptNoHFHO(self):
-        exLabel = ("metOptNoHFHO", "" ,"METP")
-        acLabel = exLabel
-        exHandle = self.exHandleCaloMETs
-        acHandle = self.exHandleCaloMETs
-        candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
-        self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
+    # def test_recoCaloMETs_metOpt(self):
+    #     exLabel = ("metOpt", "" ,"METP")
+    #     acLabel = exLabel
+    #     exHandle = self.exHandleCaloMETs
+    #     acHandle = self.exHandleCaloMETs
+    #     candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
+    #     self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
+    #
+    # def test_recoCaloMETs_metOptHO(self):
+    #     exLabel = ("metOptHO", "" ,"METP")
+    #     acLabel = exLabel
+    #     exHandle = self.exHandleCaloMETs
+    #     acHandle = self.exHandleCaloMETs
+    #     candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
+    #     self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
+    #
+    # def test_recoCaloMETs_metOptNoHF(self):
+    #     exLabel = ("metOptNoHF", "" ,"METP")
+    #     acLabel = exLabel
+    #     exHandle = self.exHandleCaloMETs
+    #     acHandle = self.exHandleCaloMETs
+    #     candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
+    #     self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
+    #
+    # def test_recoCaloMETs_metOptNoHFHO(self):
+    #     exLabel = ("metOptNoHFHO", "" ,"METP")
+    #     acLabel = exLabel
+    #     exHandle = self.exHandleCaloMETs
+    #     acHandle = self.exHandleCaloMETs
+    #     candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
+    #     self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
     def test_recoCaloMETs_corMetGlobalMuons(self):
         exLabel = ("corMetGlobalMuons", "" ,"METP")
