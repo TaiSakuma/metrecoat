@@ -68,6 +68,11 @@ process.pfMetWithSignificance = process.pfMet.clone(
     jets = cms.InputTag("ak5PFJets")
     )
 
+process.caloMetWithSignificance = process.caloMet.clone(
+    process.METSignificance_params,
+    calculateSignificance = cms.bool(True)
+    )
+
 process.tcMetCST = process.tcMet.clone()
 process.tcMetCST.correctShowerTracks = cms.bool(True)
 
@@ -90,6 +95,7 @@ process.p = cms.Path(
     process.caloMetBEFO *
     process.caloMetBE *
     process.caloMetBEO *
+    process.caloMetWithSignificance *
     process.muonMETValueMapProducer *
     process.muonTCMETValueMapProducer *
     process.corMetGlobalMuons *
