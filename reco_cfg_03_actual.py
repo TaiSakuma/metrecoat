@@ -24,8 +24,6 @@ process.load("RecoMET.Configuration.RecoMET_cff")
 process.load("RecoMET.METProducers.MuonTCMETValueMapProducer_cff")
 process.load("RecoMET.METProducers.TCMET_cfi")
 
-process.load("RecoMET.METProducers.HTMET_cfi")
-
 process.load("RecoMET/METProducers.PFMET_cfi")
 process.load("RecoMET.METProducers.pfChMet_cfi")
 
@@ -92,11 +90,6 @@ process.p = cms.Path(
     process.caloMetBEFO *
     process.caloMetBE *
     process.caloMetBEO *
-    # process.htMetKT4 *
-    # process.htMetKT6 *
-    # process.htMetIC5 *
-    process.htMetAK5 * 
-    # process.htMetAK7 *
     process.muonMETValueMapProducer *
     process.muonTCMETValueMapProducer *
     process.corMetGlobalMuons *
