@@ -88,14 +88,10 @@ process.p = cms.Path(
     process.genMetCaloAndNonPrompt * 
     process.genMetTrue *
     process.genMetIC5GenJets *
-    process.met *
-    process.metNoHF *
-    process.metHO *
-    process.metNoHFHO *
-    process.metOpt *
-    process.metOptNoHF *
-    process.metOptHO *
-    process.metOptNoHFHO *
+    process.caloMet *
+    process.caloMetBEFO *
+    process.caloMetBE *
+    process.caloMetBEO *
     # process.htMetKT4 *
     # process.htMetKT6 *
     # process.htMetIC5 *
