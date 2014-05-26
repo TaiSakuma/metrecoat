@@ -24,8 +24,6 @@ process.load("RecoMET.Configuration.RecoMET_cff")
 process.load("RecoMET.METProducers.MuonTCMETValueMapProducer_cff")
 process.load("RecoMET.METProducers.TCMET_cfi")
 
-process.load("RecoMET.METProducers.HTMET_cfi")
-
 process.load("RecoMET/METProducers.PFMET_cfi")
 process.load("RecoMET.METProducers.pfChMet_cfi")
 
@@ -88,19 +86,10 @@ process.p = cms.Path(
     process.genMetCaloAndNonPrompt * 
     process.genMetTrue *
     process.genMetIC5GenJets *
-    process.met *
-    process.metNoHF *
-    process.metHO *
-    process.metNoHFHO *
-    process.metOpt *
-    process.metOptNoHF *
-    process.metOptHO *
-    process.metOptNoHFHO *
-    # process.htMetKT4 *
-    # process.htMetKT6 *
-    # process.htMetIC5 *
-    process.htMetAK5 * 
-    # process.htMetAK7 *
+    process.caloMet *
+    process.caloMetBEFO *
+    process.caloMetBE *
+    process.caloMetBEO *
     process.muonMETValueMapProducer *
     process.muonTCMETValueMapProducer *
     process.corMetGlobalMuons *
