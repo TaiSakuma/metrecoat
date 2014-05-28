@@ -73,8 +73,8 @@ class METProducerTest(unittest.TestCase):
         label = ("corrPfMetType0PfCand",  "",       "CORR")
         self.assert_CorrMETData(label)
 
-    def test_muonCaloMETcorr(self):
-        label = ("muonCaloMETcorr", "",       "CORR")
+    def test_muoaloMetCorr(self):
+        label = ("muCaloMetCorr", "",       "CORR")
         self.assert_CorrMETData(label)
 
     def test_corrCaloMetType1_offset(self):
