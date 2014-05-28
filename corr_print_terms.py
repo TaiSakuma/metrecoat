@@ -41,7 +41,7 @@ def count(inputPath):
     inputTags = (
         ("pfCandMETcorr",                   "",       "CORR",   handleCorrMETData),
         ("pfchsMETcorr",                    "type0",  "CORR",   handleCorrMETData),
-        ("muonCaloMETcorr",                 "",       "CORR",   handleCorrMETData),
+        ("muCaloMetCorr",                   "",       "CORR",   handleCorrMETData),
         ("corrPfMetType1",                  "offset", "CORR",   handleCorrMETData),
         ("corrPfMetType1",                  "type1",  "CORR",   handleCorrMETData),
         ("corrPfMetType1",                  "type2",  "CORR",   handleCorrMETData),
