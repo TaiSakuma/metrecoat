@@ -187,9 +187,9 @@ class METProducerTest(unittest.TestCase):
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
         self.assert_collection(exLabel, acLabel, exHandle, acHandle, candidateAssertMethods)
 
-    def test_recoCaloMETs_corMetGlobalMuons(self):
+    def test_recoCaloMETs_caloMetM(self):
         exLabel = ("corMetGlobalMuons", "" ,"METP")
-        acLabel = exLabel
+        acLabel = ("caloMetM", "" ,"METP")
         exHandle = self.exHandleCaloMETs
         acHandle = self.exHandleCaloMETs
         candidateAssertMethods = ('assert_recoLeafCandidate', 'assert_recoMET', 'assert_recoCaloMET')
