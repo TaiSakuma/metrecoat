@@ -19,7 +19,10 @@ process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 
 ##____________________________________________________________________________||
 process.load("RecoMET.Configuration.RecoGenMET_cff")
-process.load("RecoMET.Configuration.RecoMET_cff")
+
+process.load("RecoMET.METProducers.CaloMET_cfi")
+process.load("RecoMET.METProducers.MuonMETValueMapProducer_cff")
+process.load("RecoMET.METProducers.MetMuonCorrections_cff")
 
 process.load("RecoMET.METProducers.MuonTCMETValueMapProducer_cff")
 process.load("RecoMET.METProducers.TCMET_cfi")
