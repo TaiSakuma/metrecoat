@@ -2,6 +2,7 @@
 ##____________________________________________________________________________||
 from PhysicsTools.PatAlgos.patTemplate_cfg import *
 
+
 ##____________________________________________________________________________||
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
@@ -11,18 +12,20 @@ options.maxEvents = -1
 options.parseArguments()
 
 ##____________________________________________________________________________||
+process.options.allowUnscheduled = cms.untracked.bool(True)
+
+process.load("PhysicsTools.PatAlgos.producersLayer1.patCandidates_cff")
+process.load("PhysicsTools.PatAlgos.selectionLayer1.selectedPatCandidates_cff")
+process.load("PhysicsTools.PatUtils.patPFMETCorrections_cff")
+
 process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(options.maxEvents))
 process.MessageLogger.cerr.FwkReport.reportEvery = 10
 
 ##____________________________________________________________________________||
 from PhysicsTools.PatAlgos.tools.jetTools import *
-switchJetCollection(process, cms.InputTag('ak5PFJets'),
-                    doJTA        = True,
-                    doBTagging   = False,
-                    jetCorrLabel = ('AK5PF', cms.vstring(['L1FastJet', 'L2Relative', 'L3Absolute'])),
-                    doType1MET   = True,
-                    genJetCollection=cms.InputTag("ak5GenJets"),
-                    doJetID      = True,
+switchJetCollection(process,
+                    jetSource = cms.InputTag('ak4PFJets'),
+                    jetCorrections = ('AK5PF', ['L1FastJet', 'L2Relative', 'L3Absolute'], '')
                     )
 
 ##____________________________________________________________________________||
@@ -37,16 +40,6 @@ process.source = cms.Source(
     )
 
 ##____________________________________________________________________________||
-process.p = cms.Path(
-    process.patDefaultSequence
-)
-
-##____________________________________________________________________________||
 process.out.fileName = cms.untracked.string(options.outputFile)
-process.out.outputCommands = cms.untracked.vstring(
-    'keep *',
-    # 'drop *',
-    # 'keep patMETs_patMETs__PAT',
-    ) 
 
 ##____________________________________________________________________________||
