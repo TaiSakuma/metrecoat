@@ -58,7 +58,7 @@ def count(inputPath):
         ("caloMetBEFO"             ,"" ,"METP" ,handleCaloMETs  ),
         ("caloMetBE"               ,"" ,"METP" ,handleCaloMETs  ),
         ("caloMetBEO"              ,"" ,"METP" ,handleCaloMETs  ),
-        ("corMetGlobalMuons"       ,"" ,"METP" ,handleCaloMETs  ),
+        ("caloMetM"                ,"" ,"METP" ,handleCaloMETs  ),
         ("tcMet"                   ,"" ,"METP" ,handleMETs      ),
         ("tcMetCST"                ,"" ,"METP" ,handleMETs      ),
         ("tcMetRft2"               ,"" ,"METP" ,handleMETs      ),
