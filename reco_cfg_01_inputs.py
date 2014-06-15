@@ -16,7 +16,6 @@ process.load("Configuration.StandardSequences.Reconstruction_cff")
 
 process.load("RecoMET.Configuration.CaloTowersOptForMET_cff")
 process.load("RecoMET.Configuration.RecoMET_cff")
-process.load("RecoMET.Configuration.RecoHTMET_cff")
 process.load("RecoMET.Configuration.RecoGenMET_cff")
 process.load("RecoMET.Configuration.GenMETParticles_cff")
 process.load("RecoMET.Configuration.RecoPFMET_cff")
