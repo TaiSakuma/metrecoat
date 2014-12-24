@@ -25,12 +25,17 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 10
 from PhysicsTools.PatAlgos.tools.jetTools import *
 switchJetCollection(process,
                     jetSource = cms.InputTag('ak4PFJets'),
-                    jetCorrections = ('AK5PF', ['L1FastJet', 'L2Relative', 'L3Absolute'], '')
+                    jetCorrections = ('AK4PF', ['L1FastJet', 'L2Relative', 'L3Absolute'], '')
                     )
 
 ##____________________________________________________________________________||
-from PhysicsTools.PatUtils.tools.metUncertaintyTools import runMEtUncertainties
-runMEtUncertainties(process)
+from PhysicsTools.PatUtils.tools.runType1PFMEtUncertainties import runType1PFMEtUncertainties
+runType1PFMEtUncertainties(process,
+                           addToPatDefaultSequence = False,
+                           jetCollection = "selectedPatJets",
+                           electronCollection = "selectedPatElectrons",
+                           muonCollection = "selectedPatMuons",
+                           tauCollection = "selectedPatTaus")
 
 
 ##____________________________________________________________________________||
