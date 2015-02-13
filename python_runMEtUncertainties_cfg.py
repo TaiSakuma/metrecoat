@@ -23,9 +23,8 @@ from PhysicsTools.PatAlgos.tools.jetTools import *
 switchJetCollection(process, cms.InputTag('ak5PFJets'),
                     doJTA        = True,
                     doBTagging   = False,
-                    jetCorrLabel = ('AK5PF', cms.vstring(['L1FastJet', 'L2Relative', 'L3Absolute'])),
+                    jetCorrLabel = ('AK5PF', cms.vstring(['L1FastJet', 'L2Relative', 'L3Absolute', 'L2L3Residual'])),
                     doType1MET   = True,
-                    genJetCollection=cms.InputTag("ak5GenJets"),
                     doJetID      = True,
                     )
 
