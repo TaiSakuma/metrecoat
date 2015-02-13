@@ -5,7 +5,7 @@ from PhysicsTools.PatAlgos.patTemplate_cfg import *
 ##____________________________________________________________________________||
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
-options.inputFiles = 'file:/afs/cern.ch/cms/Tutorials/TWIKI_DATA/MET/TTJets_AODSIM_532_numEvent100.root', 
+options.inputFiles = '/store/data/Run2012C/SingleMu/AOD/22Jan2013-v1/20000/000A8B8E-2875-E211-BC1E-00259073E3D6.root',
 options.outputFile = 'patTuple_runMEtUncertainties.root'
 options.maxEvents = -1
 options.parseArguments()
@@ -13,6 +13,10 @@ options.parseArguments()
 ##____________________________________________________________________________||
 process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(options.maxEvents))
 process.MessageLogger.cerr.FwkReport.reportEvery = 10
+
+##____________________________________________________________________________||
+from PhysicsTools.PatAlgos.tools.coreTools import *
+runOnData(process)
 
 ##____________________________________________________________________________||
 from PhysicsTools.PatAlgos.tools.jetTools import *
@@ -24,6 +28,11 @@ switchJetCollection(process, cms.InputTag('ak5PFJets'),
                     genJetCollection=cms.InputTag("ak5GenJets"),
                     doJetID      = True,
                     )
+
+##____________________________________________________________________________||
+process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
+from Configuration.AlCa.GlobalTag import GlobalTag
+process.GlobalTag.globaltag = 'FT_53_V21_AN4::All'
 
 ##____________________________________________________________________________||
 from PhysicsTools.PatUtils.tools.metUncertaintyTools import runMEtUncertainties
