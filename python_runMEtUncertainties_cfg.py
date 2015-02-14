@@ -15,6 +15,11 @@ process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(options.maxEv
 process.MessageLogger.cerr.FwkReport.reportEvery = 10
 
 ##____________________________________________________________________________||
+process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
+from Configuration.AlCa.GlobalTag import GlobalTag
+process.GlobalTag.globaltag = 'FT_53_V21_AN4::All'
+
+##____________________________________________________________________________||
 from PhysicsTools.PatAlgos.tools.coreTools import *
 runOnData(process)
 
@@ -27,11 +32,6 @@ switchJetCollection(process, cms.InputTag('ak5PFJets'),
                     doType1MET   = True,
                     doJetID      = True,
                     )
-
-##____________________________________________________________________________||
-process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag.globaltag = 'FT_53_V21_AN4::All'
 
 ##____________________________________________________________________________||
 from PhysicsTools.PatUtils.tools.metUncertaintyTools import runMEtUncertainties
